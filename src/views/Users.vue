@@ -179,6 +179,7 @@ export default {
 
     // 전개 연산자 사용
     console.log(...under20000);
+    
 
 
   }, 
