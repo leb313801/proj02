@@ -154,9 +154,10 @@ export default {
     test(obj3)
 
     const obj4 = {a:10, ...obj3}
+    console.log("obj4 : " + JSON.stringify(obj4))
     console.log("obj4 : " + obj4.bag.item_1 )
 
-    let data = [1,2,3,4,5]
+    const data = [1,2,3,4,5]
 
     let result = data.map(d => d + 1)
     console.log("result : " + result )
@@ -178,7 +179,50 @@ export default {
     }
 
     // 전개 연산자 사용
+    console.log("----------")
     console.log(...under20000);
+    console.log("----------")
+
+    console.log(filterProducts[2])
+
+    const data1 = [6,7]
+    const datasum = [...data,...data1]
+    console.log(datasum)
+
+    const [firstv] = datasum
+    console.log("firstv:" + firstv)
+
+    const [first,second,...others] = data
+    console.log(first,second,others)
+
+    function func(){
+      console.log(JSON.stringify(arguments))
+
+      let args = Array.prototype.slice.call(arguments)
+      console.log(JSON.stringify(args))
+      console.log(args[0])
+      console.log(args.slice(1))
+
+    }
+    func(1,2,3,4,5)
+
+
+    function func1(first,...args){
+      //console.log(JSON.stringify(arguments))
+
+      //let args = Array.prototype.slice.call(arguments)
+      //console.log(JSON.stringify(args))
+      console.log(first)
+      console.log(args[0])
+      console.log(args.slice(1))
+
+    }
+    func1(1,2,3,4,5)
+
+
+    const arr1 = []
+    arr1.push(1,2,3)
+    console.log(arr1)
     
 
 
