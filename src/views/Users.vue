@@ -23,6 +23,8 @@
         <li>strawberry</li>
       </ul>
     </div>
+    <hr/>
+    <input type="text" ref="addr" v-model="addr" :disabled="true" placeholder="내용을 입력하세요"> <button @click="inputAddr">확인</button>
   </div>
 </template>
 
@@ -47,7 +49,8 @@ export default {
   name: 'App',
   data() {
     return {
-      userName: ''
+      userName: '',
+      addr:''
     }
   },
   computed: {
@@ -271,6 +274,21 @@ export default {
       });
       return resultArray.length;
       
+    },
+    inputAddr() {
+      this.$refs.addr.disabled = false;
+      this.$refs.addr.placeholder = '';
+      this.$refs.addr.focus();
+      console.log(this.$refs.addr.disabled)
+
+      let name = 'user';
+      let nObj = name + 'Name';
+      nObj = '홍길동';
+      this.userName = nObj;
+      
+     
+      console.log('userName:' + this.userName);
+
     }
   }
 }
