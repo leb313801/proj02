@@ -24,7 +24,12 @@
       </ul>
     </div>
     <hr/>
-    <input type="text" ref="addr" v-model="addr" :disabled="true" placeholder="내용을 입력하세요"> <button @click="inputAddr">확인</button>
+    <select name="slt" @change="onChange">
+      <option value="">선택</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+    <input type="text" name="addr" ref="addr" v-model="addr" :disabled="true" placeholder="내용을 입력하세요" @keyup="keyUpEvent"> <button @click="inputAddr">확인</button>
   </div>
 </template>
 
@@ -284,11 +289,29 @@ export default {
       let name = 'user';
       let nObj = name + 'Name';
       nObj = '홍길동';
-      this.userName = nObj;
+      
       
      
-      console.log('userName:' + this.userName);
+      console.log('userName:' + nObj);
 
+      this.$nextTick(() => {
+        this.$refs.addr.value = '';
+        this.$refs.addr.style.cssText = '';
+      });
+
+
+    },
+    onChange(event){
+      console.log(event.target.name)
+      const refName ="addr";
+      this.$refs[refName].disabled = false;
+      this.$refs[refName].placeholder = '';
+      this.$refs[refName].focus();
+      this.$refs[refName].style.cssText = "background-color:#66BB6A !important; border:1px solid #66BB6A !important; color:#fff !important;";
+    },
+    keyUpEvent(event){
+      console.log(event.target.name)
+      console.log("value:" + this.$refs.addr.value)
     }
   }
 }
